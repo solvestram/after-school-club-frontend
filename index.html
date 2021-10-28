@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1 v-text="sitename"></h1>
+        </header>
+
+        <main>
+            <figure>
+                <img v-bind:src="product.image"
+                    style="width: 80px; height: 80px; float: left; padding-top: 50px; padding-bottom: 30px; padding-right: 30px;">
+            </figure>
+
+            <div>
+                <h2 v-text="product.title"></h2>
+                <p v-text="product.location"></p>
+                <p>Price: {{product.price}}</p>
+                <p>Number of spaces: {{product.quantity}}</p>
+            </div>
+
+            <button :disabled="isDisabled" v-on:click="addToCart">Add to cart</button>
+        </main>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                sitename: 'After School Club',
+                product: {
+                    title: 'Math',
+                    location: 'London',
+                    price: 100,
+                    quantity: 5,
+                    image: 'math.png'
+                },
+            },
+            methods: {
+                addToCart: function () {
+                    if (this.product.quantity > 0) {
+                        this.product.quantity -= 1;
+                    }
+                }
+            },
+            computed: {
+                isDisabled: function () {
+                    return this.product.quantity === 0;
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
