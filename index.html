@@ -21,16 +21,16 @@
         </header>
 
         <main>
-            <div v-for="lesson in lessons">
+            <div class="card" v-for="lesson in lessons" style="width: 18rem;">
                 <figure>
-                    <img v-bind:src="lesson.image">
+                    <img class="card-img-top" v-bind:src="lesson.image">
                 </figure>
 
-                <div>
-                    <h2 v-text="lesson.title"></h2>
-                    <p v-text="lesson.location"></p>
-                    <p>Price: {{lesson.price}}</p>
-                    <p>Number of spaces: {{lesson.quantity}}</p>
+                <div class="card-body">
+                    <h5 class="card-title" v-text="lesson.title"></h5>
+                    <p class="card-text" v-text="lesson.location"></p>
+                    <p class="card-text">Price: {{lesson.price}}</p>
+                    <p class="card-text">Number of spaces: {{lesson.quantity}}</p>
                 </div>
 
                 <button :disabled="isDisabled" v-on:click="addToCart(lesson)">Add to cart</button>
