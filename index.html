@@ -47,27 +47,13 @@
         </main>
     </div>
 
+    <script src="lessons.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
                 sitename: 'After School Club',
-                lessons: [
-                    {
-                        title: 'Math',
-                        location: 'London',
-                        price: 100,
-                        quantity: 5,
-                        image: 'images/math.png'
-                    },
-                    {
-                        title: 'English',
-                        location: 'London',
-                        price: 90,
-                        quantity: 5,
-                        image: 'images/english.jpg'
-                    }
-                ],
+                lessons: lessons,
             },
             methods: {
                 addToCart(lesson) {
