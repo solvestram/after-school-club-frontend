@@ -21,19 +21,25 @@
         </header>
 
         <main>
-            <div class="card" v-for="lesson in lessons" style="width: 18rem;">
-                <figure>
-                    <img class="card-img-top" v-bind:src="lesson.image">
-                </figure>
+            <div class="container">
+                <div class="row row-cols-3">
+                    <div class="col" v-for="lesson in lessons">
+                        <div class="card">
+                            <figure>
+                                <img class="card-img-top" height=200 v-bind:src="lesson.image">
+                            </figure>
 
-                <div class="card-body">
-                    <h5 class="card-title" v-text="lesson.title"></h5>
-                    <p class="card-text" v-text="lesson.location"></p>
-                    <p class="card-text">Price: {{lesson.price}}</p>
-                    <p class="card-text">Number of spaces: {{lesson.quantity}}</p>
+                            <div class="card-body">
+                                <h5 class="card-title" v-text="lesson.title"></h5>
+                                <p class="card-text">Location: {{lesson.location}}</p>
+                                <p class="card-text">Price: {{lesson.price}}</p>
+                                <p class="card-text">Number of spaces: {{lesson.quantity}}</p>
+                            </div>
+
+                            <button :disabled="isDisabled" v-on:click="addToCart(lesson)">Add to cart</button>
+                        </div>
+                    </div>
                 </div>
-
-                <button :disabled="isDisabled" v-on:click="addToCart(lesson)">Add to cart</button>
             </div>
         </main>
     </div>
