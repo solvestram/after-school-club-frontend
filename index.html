@@ -26,6 +26,26 @@
         </nav>
 
         <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span><strong>Sort by: </strong></span>
+                        <div class="mb-4 form-check form-check-inline" v-for="option in sortOptions">
+                            <input class="form-check-input" type="radio" name="sortBy" v-bind:id="option" v-bind:value="option"
+                                v-model="sortBy">
+                            <label class="form-check-label" v-bind:for="option">{{option}}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <span><strong>Sort order: </strong></span>
+                        <div class="mb-4 form-check form-check-inline" v-for="option in orderOptions">
+                            <input class="form-check-input" type="radio" name="sortOrder" v-bind:id="option"
+                                v-bind:value="option" v-model="sortOrder">
+                            <label class="form-check-label" v-bind:for="option">{{option}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="lesson-cards" class="container">
                 <div class="row row-cols-4">
                     <div class="col mb-4" v-for="lesson in lessons">
