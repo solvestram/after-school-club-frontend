@@ -18,14 +18,24 @@
 
 <body>
     <div id="app">
+        <!-- Top bar -->
         <nav class="navbar mb-4 navbar-dark bg-dark">
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
-                <button class="btn btn-outline-light"><i class="fas fa-shopping-cart"></i> Shopping cart</button>
+                <div v-if="!showCart">
+                    <button v-on:click="switchToCart()" class="btn btn-outline-light"><i
+                            class="fas fa-shopping-cart"></i>
+                        Shopping cart</button>
+                </div>
+                <div v-else>
+                    <button v-on:click="switchToMain()" class="btn btn-outline-light"><i class="fas fa-angle-left"></i>
+                        Go back</button>
+                </div>
             </div>
         </nav>
 
-        <main>
+        <!-- Main page with the list of lessons -->
+        <div v-if="!showCart" id='mainPage'>
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -46,6 +56,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Listing lessons -->
             <div id="lesson-cards" class="container">
                 <div class="row row-cols-4">
                     <div class="col mb-4" v-for="lesson in sortedLessons">
@@ -69,7 +81,12 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <!-- Shopping cart page -->
+        <div v-else id="cartPage">
+            <p>Not yet implemented</p>
+        </div>
     </div>
 
     <script src="lessons.js"></script>

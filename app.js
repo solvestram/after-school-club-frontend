@@ -2,13 +2,31 @@ var app = new Vue({
     el: '#app',
     data: {
         sitename: 'After School Club',
+
+        // shopping cart properties
+        cartItems: [],
+        showCart: false,
+
+        // sorting properties
         sortOptions: ["subject", "location", "price", "space"],
         orderOptions: ["ascending", "descending"],
         sortBy: 'subject',
         sortOrder: 'ascending',
+
+
         lessons: lessons,
     },
     methods: {
+        // switches to the cart page
+        switchToCart() {
+            this.showCart = true;
+        },
+
+        // switches to the main page
+        switchToMain() {
+            this.showCart = false;
+        },
+
         addToCart(lesson) {
             if (lesson.space > 0) {
                 lesson.space -= 1;
@@ -16,6 +34,7 @@ var app = new Vue({
         }
     },
     computed: {
+        // for sorting items on the main page
         sortedLessons() {
             let sorted;
 
