@@ -47,12 +47,12 @@ var app = new Vue({
             lesson.space += 1;
 
             // Disable shopping cart if it is empty
-            if (this.cartItems.length <= 0){
+            if (this.cartItems.length <= 0) {
                 this.showCart = false;
             }
         },
 
-        checkout(){
+        checkout() {
             // not yet implemented
         },
     },
@@ -108,6 +108,26 @@ var app = new Vue({
 
         cartItemsCount() {
             return this.cartItems.length;
+        },
+
+        // checks whether the checkout button should be enabled
+        checkoutEnabled() {
+            //check if any of the fields is empty
+            if (this.checkoutName === "" || this.checkoutPhone === "") {
+                return false;
+            }
+
+            //check if checkoutName is only letters
+            if (/[^a-z]/i.test(this.checkoutName)) {
+                return false;
+            }
+
+            //check if checkoutPhone is only number
+            if (!/^\d+$/.test(this.checkoutPhone)) {
+                return false;
+            }
+
+            return true
         }
     }
 })
