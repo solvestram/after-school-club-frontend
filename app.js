@@ -28,10 +28,22 @@ var app = new Vue({
         },
 
         addToCart(lesson) {
+            this.cartItems.push(lesson);
+
             if (lesson.space > 0) {
                 lesson.space -= 1;
             }
-        }
+        },
+
+        removeFromCart(lesson) {
+            let index = this.cartItems.indexOf(lesson);
+
+            if (index > -1) {
+                this.cartItems.splice(index, 1);
+            }
+
+            lesson.space += 1;
+        },
     },
     computed: {
         // for sorting items on the main page

@@ -75,7 +75,7 @@
                                     {{lesson.space}}</p>
                             </div>
 
-                            <button class="btn btn-dark" :disabled="isDisabled" v-on:click="addToCart(lesson)">Add to
+                            <button class="btn btn-dark" v-on:click="addToCart(lesson)">Add to
                                 cart</button>
                         </div>
                     </div>
@@ -85,7 +85,34 @@
 
         <!-- Shopping cart page -->
         <div v-else id="cartPage">
-            <p>Not yet implemented</p>
+            <!-- List of lessons in the cart -->
+            <div class="container">
+                <p class="h3">Shopping cart</p>
+                <div class="row row-cols-4">
+                    <div class="col mb-4" v-for="lesson in cartItems">
+                        <div class="card text-dark bg-light">
+                            <figure>
+                                <img class="card-img-top" height=200 v-bind:src="lesson.image">
+                            </figure>
+
+                            <div class="card-body">
+                                <h5 class="card-title" v-text="lesson.subject"></h5>
+                                <p class="card-text mb-0"><i class="fas fa-map-marker-alt"></i> Location:
+                                    {{lesson.location}}</p>
+                                <p class="card-text mb-0"><i class="fas fa-dollar-sign"></i> Price: {{lesson.price}}</p>
+                            </div>
+
+                            <button class="btn btn-danger" v-on:click="removeFromCart(lesson)">Remove from cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkout -->
+            <div class="container">
+                <p class="h3">Checkout</p>
+                <p>Not yet implemented</p>
+            </div>
         </div>
     </div>
 
