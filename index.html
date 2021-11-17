@@ -24,13 +24,14 @@
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
                     <div v-if="!isCartDisabled">
-                        <button v-on:click="switchToCart()" class="btn btn-outline-light"><i
-                            class="fas fa-shopping-cart"></i>
-                        Shopping cart</button>
+                        <button v-on:click="switchToCart()" class="btn btn-outline-light btn-sm"><i
+                                class="fas fa-shopping-cart"></i>
+                            Shopping cart</button>
                     </div>
                 </div>
                 <div v-else>
-                    <button v-on:click="switchToMain()" class="btn btn-outline-light"><i class="fas fa-angle-left"></i>
+                    <button v-on:click="switchToMain()" class="btn btn-outline-light btn-sm"><i
+                            class="fas fa-angle-left"></i>
                         Go back</button>
                 </div>
             </div>
