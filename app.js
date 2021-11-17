@@ -6,6 +6,8 @@ var app = new Vue({
         // shopping cart properties
         cartItems: [],
         showCart: false,
+        checkoutName: "",
+        checkoutPhone: "",
 
         // sorting properties
         sortOptions: ["subject", "location", "price", "space"],
@@ -48,6 +50,10 @@ var app = new Vue({
             if (this.cartItems.length <= 0){
                 this.showCart = false;
             }
+        },
+
+        checkout(){
+            // not yet implemented
         },
     },
     computed: {

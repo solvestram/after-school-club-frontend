@@ -88,6 +88,25 @@
 
         <!-- Shopping cart page -->
         <div v-else id="cartPage">
+
+            <!-- Checkout -->
+            <div class="container mb-5">
+                <p class="h3">Checkout</p>
+                <div id="checkout" class="row">
+                    <label for="checkoutName" class="col-auto col-form-label">Name: </label>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="checkoutName" v-model="checkoutName">
+                    </div>
+                    <label for="checkoutPhone" class="col-auto col-form-label">Phone number: </label>
+                    <div class="col-auto">
+                        <input type="tel" class="form-control" id="checkoutPhone" v-model="checkoutPhone">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" v-on:click="checkout()">Check out</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- List of lessons in the cart -->
             <div class="container">
                 <p class="h3">Shopping cart</p>
@@ -109,12 +128,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Checkout -->
-            <div class="container">
-                <p class="h3">Checkout</p>
-                <p>Not yet implemented</p>
             </div>
         </div>
     </div>
