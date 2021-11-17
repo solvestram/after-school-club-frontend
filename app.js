@@ -43,6 +43,11 @@ var app = new Vue({
             }
 
             lesson.space += 1;
+
+            // Disable shopping cart if it is empty
+            if (this.cartItems.length <= 0){
+                this.showCart = false;
+            }
         },
     },
     computed: {
@@ -89,6 +94,10 @@ var app = new Vue({
             }
 
             return sorted;
-        }
+        },
+
+        isCartDisabled() {
+            return this.cartItems.length <= 0;
+        },
     }
 })

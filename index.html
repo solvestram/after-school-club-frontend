@@ -23,7 +23,7 @@
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
-                    <button v-on:click="switchToCart()" class="btn btn-outline-light"><i
+                    <button :disabled="isCartDisabled" v-on:click="switchToCart()" class="btn btn-outline-light"><i
                             class="fas fa-shopping-cart"></i>
                         Shopping cart</button>
                 </div>
