@@ -26,7 +26,7 @@
                     <div v-if="!isCartDisabled">
                         <button v-on:click="switchToCart()" class="btn btn-outline-light btn-sm"><i
                                 class="fas fa-shopping-cart"></i>
-                            Shopping cart</button>
+                            Shopping cart ({{ cartItemsCount }})</button>
                     </div>
                 </div>
                 <div v-else>

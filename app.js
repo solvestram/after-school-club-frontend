@@ -99,5 +99,9 @@ var app = new Vue({
         isCartDisabled() {
             return this.cartItems.length <= 0;
         },
+
+        cartItemsCount() {
+            return this.cartItems.length;
+        }
     }
 })
