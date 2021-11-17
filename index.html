@@ -78,7 +78,8 @@
                                     {{lesson.space}}</p>
                             </div>
 
-                            <button class="btn btn-dark" v-on:click="addToCart(lesson)">Add to
+                            <button :disabled="!(lesson.space > 0)" class="btn btn-dark"
+                                v-on:click="addToCart(lesson)">Add to
                                 cart</button>
                         </div>
                     </div>
