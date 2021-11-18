@@ -39,11 +39,12 @@
 
         <!-- Main page with the list of lessons -->
         <div v-if="!showCart" id='mainPage'>
-            <div class="container">
+            <!-- Sorting options -->
+            <div class="container mb-4">
                 <div class="row">
                     <div class="col">
                         <span><strong>Sort by: </strong></span>
-                        <div class="mb-4 form-check form-check-inline" v-for="option in sortOptions">
+                        <div class="form-check form-check-inline" v-for="option in sortOptions">
                             <input class="form-check-input" type="radio" name="sortBy" v-bind:id="option"
                                 v-bind:value="option" v-model="sortBy">
                             <label class="form-check-label" v-bind:for="option">{{option}}</label>
@@ -51,7 +52,7 @@
                     </div>
                     <div class="col">
                         <span><strong>Sort order: </strong></span>
-                        <div class="mb-4 form-check form-check-inline" v-for="option in orderOptions">
+                        <div class="form-check form-check-inline" v-for="option in orderOptions">
                             <input class="form-check-input" type="radio" name="sortOrder" v-bind:id="option"
                                 v-bind:value="option" v-model="sortOrder">
                             <label class="form-check-label" v-bind:for="option">{{option}}</label>
@@ -61,9 +62,9 @@
             </div>
 
             <!-- Listing lessons -->
-            <div id="lesson-cards" class="container">
-                <div class="row row-cols-4">
-                    <div class="col mb-4" v-for="lesson in sortedLessons">
+            <div id="lesson-cards" class="container mb-4">
+                <div class="row row-cols-4 g-4">
+                    <div class="col" v-for="lesson in sortedLessons">
                         <div class="card text-dark bg-light">
                             <figure>
                                 <img class="card-img-top" height=200 v-bind:src="lesson.image">
@@ -91,30 +92,38 @@
         <div v-else id="cartPage">
 
             <!-- Checkout -->
-            <div class="container mb-5">
+            <div class="container mb-4">
                 <p class="h3">Checkout</p>
-                <div id="checkout" class="row g-3">
-                    <label for="checkoutName" class="col-auto col-form-label">Name: </label>
-                    <div class="col-auto">
-                        <input type="text" class="form-control" id="checkoutName" v-model="checkoutName">
+                <div id="checkout">
+                    <div class="form-row">
+                        <label for="checkoutName" class="col col-form-label">Name: </label>
+                        <div class="col w-25">
+                            <input type="text" class="form-control" id="checkoutName" v-model="checkoutName">
+                        </div>
                     </div>
-                    <label for="checkoutPhone" class="col-auto col-form-label">Phone number: </label>
-                    <div class="col-auto">
-                        <input type="tel" class="form-control" id="checkoutPhone" v-model="checkoutPhone">
+                    <div class="form-row">
+                        <label for="checkoutPhone" class="col-auto col-form-label">Phone number: </label>
+                        <div class="col w-25">
+                            <input type="tel" class="form-control" id="checkoutPhone" v-model="checkoutPhone">
+                        </div>
                     </div>
-                    <div class="col-auto" v-if="checkoutEnabled">
-                        <button class="btn btn-primary" v-on:click="checkout()">Check out</button>
+                    <div v-if="checkoutEnabled" class="form-row pt-3">
+                        <div class="col">
+                            <button class="btn btn-primary" v-on:click="checkout()">Check out</button>
+                        </div>
                     </div>
-                    <div v-if="orderConfirmed" class="col-6 checkout-confirmation alert alert-success">The order has been
-                        submitted</div>
+                    <div v-if="orderConfirmed" class="form-row pt-3">
+                        <div class="col w-25 order-confirmation alert alert-success">The order has been submitted
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- List of lessons in the cart -->
-            <div class="container">
+            <div class="container mb-4">
                 <p class="h3">Shopping cart</p>
-                <div class="row row-cols-4">
-                    <div class="col mb-4" v-for="lesson in cartItems">
+                <div class="row row-cols-4 g-4">
+                    <div class="col" v-for="lesson in cartItems">
                         <div class="card text-dark bg-light">
                             <figure>
                                 <img class="card-img-top" height=200 v-bind:src="lesson.image">
@@ -127,7 +136,7 @@
                                 <p class="card-text mb-0"><i class="fas fa-dollar-sign"></i> Price: {{lesson.price}}</p>
                             </div>
 
-                            <button class="btn btn-danger" v-on:click="removeFromCart(lesson)">Remove from cart</button>
+                            <button class="btn btn-danger" :disabled="orderConfirmed" v-on:click="removeFromCart(lesson)">Remove from cart</button>
                         </div>
                     </div>
                 </div>

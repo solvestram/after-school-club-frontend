@@ -29,6 +29,11 @@ var app = new Vue({
         // switches to the main page
         switchToMain() {
             this.showCart = false;
+
+            if (this.orderConfirmed) {
+                this.cartItems = [];
+                this.orderConfirmed = false;
+            }
         },
 
         addToCart(lesson) {
