@@ -15,6 +15,8 @@ var app = new Vue({
         sortBy: 'subject',
         sortOrder: 'ascending',
 
+        // true when checkout button is used
+        orderConfirmed: false,
 
         lessons: lessons,
     },
@@ -53,7 +55,10 @@ var app = new Vue({
         },
 
         checkout() {
-            // not yet implemented
+            this.orderConfirmed = true;
+
+            this.checkoutName = "";
+            this.checkoutPhone = "";
         },
     },
     computed: {
