@@ -19,7 +19,7 @@
 <body>
     <div id="app">
         <!-- Top bar -->
-        <nav class="navbar mb-4 navbar-dark bg-dark">
+        <nav class="navbar mb-4 navbar-dark bg-dark sticky-top">
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
@@ -39,10 +39,14 @@
 
         <!-- Main page with the list of lessons -->
         <div v-if="!showCart" id='mainPage'>
-            <!-- Sorting options -->
+            <!-- Search and Sorting options -->
             <div class="container mb-4">
+                <div class="form-row mb-3">
+                    <input id="search" class="col-auto form-control w-25" type="search" placeholder="Search"
+                        v-model="searchInput">
+                </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-auto">
                         <span><strong>Sort by: </strong></span>
                         <div class="form-check form-check-inline" v-for="option in sortOptions">
                             <input class="form-check-input" type="radio" name="sortBy" v-bind:id="option"
@@ -50,7 +54,7 @@
                             <label class="form-check-label" v-bind:for="option">{{option}}</label>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
                         <span><strong>Sort order: </strong></span>
                         <div class="form-check form-check-inline" v-for="option in orderOptions">
                             <input class="form-check-input" type="radio" name="sortOrder" v-bind:id="option"
@@ -136,7 +140,8 @@
                                 <p class="card-text mb-0"><i class="fas fa-dollar-sign"></i> Price: {{lesson.price}}</p>
                             </div>
 
-                            <button class="btn btn-danger" :disabled="orderConfirmed" v-on:click="removeFromCart(lesson)">Remove from cart</button>
+                            <button class="btn btn-danger" :disabled="orderConfirmed"
+                                v-on:click="removeFromCart(lesson)">Remove from cart</button>
                         </div>
                     </div>
                 </div>

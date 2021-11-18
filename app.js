@@ -3,17 +3,20 @@ var app = new Vue({
     data: {
         sitename: 'After School Club',
 
-        // shopping cart properties
-        cartItems: [],
-        showCart: false,
-        checkoutName: "",
-        checkoutPhone: "",
-
         // sorting properties
         sortOptions: ["subject", "location", "price", "space"],
         orderOptions: ["ascending", "descending"],
         sortBy: 'subject',
         sortOrder: 'ascending',
+
+        // search
+        searchInput: "",
+
+        // shopping cart properties
+        cartItems: [],
+        showCart: false,
+        checkoutName: "",
+        checkoutPhone: "",
 
         // true when checkout button is used
         orderConfirmed: false,
@@ -71,6 +74,7 @@ var app = new Vue({
         sortedLessons() {
             let sorted;
 
+            // sorting
             if (this.sortBy === 'subject') {
                 sorted = this.lessons.sort(
                     (a, b) => {
@@ -105,11 +109,24 @@ var app = new Vue({
                 );
             }
 
+            // reversing for descending order
             if (this.sortOrder === 'descending') {
                 sorted = sorted.reverse();
             }
 
-            return sorted;
+            if (this.searchInput === "") {
+                return sorted;
+            } else {
+                // search
+                let sortedWithSearch = sorted.filter(
+                    (lesson) => {
+                        let includesSubject = lesson.subject.toLowerCase().includes(this.searchInput.toLowerCase())
+                        let includesLocation = lesson.location.toLowerCase().includes(this.searchInput.toLowerCase())
+                        return includesSubject || includesLocation;
+                    });
+
+                return sortedWithSearch;
+            }
         },
 
         isCartDisabled() {
@@ -122,17 +139,17 @@ var app = new Vue({
 
         // checks whether the checkout button should be enabled
         checkoutEnabled() {
-            //check if any of the fields is empty
+            // check if any of the fields is empty
             if (this.checkoutName === "" || this.checkoutPhone === "") {
                 return false;
             }
 
-            //check if checkoutName is only letters
+            // check if checkoutName is only letters
             if (/[^a-z]/i.test(this.checkoutName)) {
                 return false;
             }
 
-            //check if checkoutPhone is only number
+            // check if checkoutPhone is only number
             if (!/^\d+$/.test(this.checkoutPhone)) {
                 return false;
             }
