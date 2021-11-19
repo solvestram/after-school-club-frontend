@@ -39,7 +39,7 @@ lessons = [
         location: 'London',
         price: 100,
         space: 5,
-        image: 'images/Math.jpg'
+        image: 'images/math.jpg'
     },
     {
         subject: 'Music',
