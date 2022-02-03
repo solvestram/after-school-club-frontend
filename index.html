@@ -23,12 +23,12 @@
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
-                    <button :disabled="isCartDisabled" v-on:click="switchToCart()" class="btn btn-outline-light btn-sm">
+                    <button :disabled="isCartDisabled" v-on:click="switchToCart()" class="btn btn-outline-light btn-sm shadow-none">
                         <i class="fas fa-shopping-cart"></i> Shopping cart ({{ cartItemsCount }})
                     </button>
                 </div>
                 <div v-else>
-                    <button v-on:click="switchToMain()" class="btn btn-outline-light btn-sm"><i
+                    <button v-on:click="switchToMain()" class="btn btn-outline-light btn-sm shadow-none"><i
                             class="fas fa-angle-left"></i>
                         Go back</button>
                 </div>
@@ -81,7 +81,7 @@
                                     {{lesson.space}}</p>
                             </div>
 
-                            <button :disabled="!(lesson.space > 0)" class="btn btn-dark"
+                            <button :disabled="!(lesson.space > 0)" class="btn btn-dark shadow-none"
                                 v-on:click="addToCart(lesson)">Add to
                                 cart</button>
                         </div>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="form-row pt-3">
                         <div class="col">
-                            <button :disabled="!checkoutEnabled" class="btn btn-primary" v-on:click="checkout()">Check
+                            <button :disabled="!checkoutEnabled" class="btn btn-primary shadow-none" v-on:click="checkout()">Check
                                 out</button>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                 <p class="card-text mb-0"><i class="fas fa-dollar-sign"></i> Price: {{lesson.price}}</p>
                             </div>
 
-                            <button class="btn btn-danger" :disabled="orderConfirmed"
+                            <button class="btn btn-danger shadow-none" :disabled="orderConfirmed"
                                 v-on:click="removeFromCart(lesson)">Remove from cart</button>
                         </div>
                     </div>
