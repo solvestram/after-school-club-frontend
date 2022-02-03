@@ -92,7 +92,7 @@ var app = new Vue({
                     },
                     body: JSON.stringify(order)
                 }).then(response => response.json()).then(response => {
-                    console.log('Success: ', response.json);
+                    console.log('Success: ', response);
                 });
 
                 // Update space
@@ -106,7 +106,7 @@ var app = new Vue({
                     },
                     body: JSON.stringify(updatedSpace)
                 }).then(response => response.json()).then(response => {
-                    console.log('Success: ', response.json);
+                    console.log('Success: ', response);
                 });
             });
 
