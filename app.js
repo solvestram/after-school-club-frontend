@@ -71,11 +71,51 @@ var app = new Vue({
             }
         },
 
+        // check out order
         checkout() {
-            this.orderConfirmed = true;
+            // sending order to API (separate request for each lesson in the cart)
+            // a lot of things here could be done better
+            let postRequestSuccess, putRequestSuccess;
+            this.cartItems.forEach(lesson => {
+                let order = {
+                    "name": this.checkoutName,
+                    "phone_number": this.checkoutPhone,
+                    "lesson_id": lesson._id,
+                    "space": 1,
+                }
 
+                // POST new order
+                fetch(this.apiUrl + "/collections/orders", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(order)
+                }).then(response => response.json()).then(response => {
+                    console.log('Success: ', response.json);
+                });
+
+                // Update space
+                let updatedSpace = {
+                    space: lesson.space
+                }
+                fetch(this.apiUrl + "/collections/lessons/" + lesson._id, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedSpace)
+                }).then(response => response.json()).then(response => {
+                    console.log('Success: ', response.json);
+                });
+            });
+
+            // Reset checkout input fields
             this.checkoutName = "";
             this.checkoutPhone = "";
+
+            // Show confirmation message
+            this.orderConfirmed = true;
         },
     },
     computed: {
