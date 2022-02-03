@@ -69,7 +69,7 @@
                     <div class="col" v-for="lesson in sortedLessons">
                         <div class="card text-dark bg-light">
                             <figure>
-                                <img class="card-img-top" height=200 v-bind:src="lesson.image">
+                                <img class="card-img-top" height=200 v-bind:src="`${apiUrl}/${lesson.image}`">
                             </figure>
 
                             <div class="card-body">
@@ -129,7 +129,7 @@
                     <div class="col" v-for="lesson in cartItems">
                         <div class="card text-dark bg-light">
                             <figure>
-                                <img class="card-img-top" height=200 v-bind:src="lesson.image">
+                                <img class="card-img-top" height=200 v-bind:src="`${apiUrl}/${lesson.image}`">
                             </figure>
 
                             <div class="card-body">
