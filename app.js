@@ -2,6 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         sitename: 'After School Club',
+        apiUrl: 'https://cst3145-after-school-club.herokuapp.com',
 
         // sorting properties
         sortOptions: ["subject", "location", "price", "space"],
@@ -21,9 +22,17 @@ var app = new Vue({
         // true when checkout button is used
         orderConfirmed: false,
 
-        lessons: lessons,
+        lessons: [],
     },
     methods: {
+        // loads all lessons
+        loadAllLessons(){
+            fetch(this.apiUrl + "/collections/lessons").then(response => response.json()).then(
+                data => {
+                    this.lessons = data;
+                });
+        },
+
         // switches to the cart page
         switchToCart() {
             this.showCart = true;
@@ -156,5 +165,10 @@ var app = new Vue({
 
             return true
         }
-    }
+    },
+
+    created() {
+        // Called when Vue instance is created
+        this.loadAllLessons();
+    },
 })
