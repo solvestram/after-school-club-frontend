@@ -117,6 +117,25 @@ var app = new Vue({
             // Show confirmation message
             this.orderConfirmed = true;
         },
+
+        // Resets database to default
+        resetDatabase() {
+            fetch(this.apiUrl + "/collections", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({"reset": true})
+            }).then(response => {
+                console.log("The database was reset");
+
+                // Reload lessons data
+                this.loadAllLessons();
+
+                // Reset cart
+                this.cartItems = [];
+            });
+        }
     },
     computed: {
         // for sorting items on the main page

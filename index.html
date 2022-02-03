@@ -23,6 +23,9 @@
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
+                    <button v-on:click="resetDatabase()" class="btn btn-outline-light btn-sm shadow-none">
+                        <i class="fas fa-sync"></i> Reset Database
+                    </button>
                     <button :disabled="isCartDisabled" v-on:click="switchToCart()" class="btn btn-outline-light btn-sm shadow-none">
                         <i class="fas fa-shopping-cart"></i> Shopping cart ({{ cartItemsCount }})
                     </button>
