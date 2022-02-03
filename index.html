@@ -21,7 +21,7 @@
         <!-- Top bar -->
         <nav class="navbar mb-4 navbar-dark bg-dark sticky-top">
             <div class="container">
-                <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
+                <a class="navbar-brand mb-0 h1" v-text="sitename" href='/'></a>
                 <div v-if="!showCart">
                     <button v-on:click="resetDatabase()" class="btn btn-outline-light btn-sm shadow-none">
                         <i class="fas fa-sync"></i> Reset Database
