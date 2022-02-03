@@ -109,9 +109,10 @@
                             <input type="tel" class="form-control" id="checkoutPhone" v-model="checkoutPhone">
                         </div>
                     </div>
-                    <div v-if="checkoutEnabled" class="form-row pt-3">
+                    <div class="form-row pt-3">
                         <div class="col">
-                            <button class="btn btn-primary" v-on:click="checkout()">Check out</button>
+                            <button :disabled="!checkoutEnabled" class="btn btn-primary" v-on:click="checkout()">Check
+                                out</button>
                         </div>
                     </div>
                     <div v-if="orderConfirmed" class="form-row pt-3">
