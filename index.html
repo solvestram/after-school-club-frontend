@@ -23,11 +23,9 @@
             <div class="container">
                 <span class="navbar-brand mb-0 h1" v-text="sitename"></span>
                 <div v-if="!showCart">
-                    <div v-if="!isCartDisabled">
-                        <button v-on:click="switchToCart()" class="btn btn-outline-light btn-sm"><i
-                                class="fas fa-shopping-cart"></i>
-                            Shopping cart ({{ cartItemsCount }})</button>
-                    </div>
+                    <button :disabled="isCartDisabled" v-on:click="switchToCart()" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-shopping-cart"></i> Shopping cart ({{ cartItemsCount }})
+                    </button>
                 </div>
                 <div v-else>
                     <button v-on:click="switchToMain()" class="btn btn-outline-light btn-sm"><i
